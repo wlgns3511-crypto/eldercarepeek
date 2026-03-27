@@ -151,3 +151,25 @@ export function getNationalAverages(): {
 export function getStatesRankedByCareType(careType: 'nursing_home_private' | 'assisted_living' | 'home_health_aide_hourly' | 'adult_day_care' | 'homemaker_services_hourly'): State[] {
   return getDb().prepare(`SELECT * FROM states ORDER BY ${careType} DESC`).all() as State[];
 }
+
+// --- City Comparison queries ---
+
+export interface CityComparison {
+  id: number;
+  slug: string;
+  city_a_slug: string;
+  city_b_slug: string;
+}
+
+export function getAllCityComparisonSlugs(limit = 50000): CityComparison[] {
+  return getDb().prepare('SELECT * FROM city_comparisons ORDER BY id LIMIT ?').all(limit) as CityComparison[];
+}
+
+export function getCityComparisonBySlug(slug: string): { a: City; b: City } | undefined {
+  const row = getDb().prepare('SELECT city_a_slug, city_b_slug FROM city_comparisons WHERE slug = ?').get(slug) as { city_a_slug: string; city_b_slug: string } | undefined;
+  if (!row) return undefined;
+  const a = getCityBySlug(row.city_a_slug);
+  const b = getCityBySlug(row.city_b_slug);
+  if (!a || !b) return undefined;
+  return { a, b };
+}
