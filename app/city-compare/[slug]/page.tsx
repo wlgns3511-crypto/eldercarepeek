@@ -10,7 +10,6 @@ interface Props { params: Promise<{ slug: string }> }
 
 export const dynamicParams = true;
 export const revalidate = 86400;
-export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return getAllCityComparisonSlugs(300).map((c) => ({ slug: c.slug }));
