@@ -206,13 +206,12 @@ export default async function StatePage({ params }: Props) {
       {/* Calculator */}
       <ElderCareCalculator defaultState={state.abbr} />
 
-      {/* Cross-references */}
-      <section className="mt-6 bg-slate-50 border border-slate-200 rounded-lg p-5">
-        <h2 className="text-lg font-bold mb-3">More About {state.state}</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
-          <a href="https://costbycity.com" className="text-teal-600 hover:underline">Cost of Living in {state.state}</a>
-          <a href="https://propertytaxpeek.com" className="text-teal-600 hover:underline">Property Taxes in {state.state}</a>
-          <a href="https://salarybycity.com" className="text-teal-600 hover:underline">Salaries in {state.state}</a>
+      {/* Related Data Resources */}
+      <section className="mt-6 p-4 bg-slate-50 rounded-lg">
+        <h3 className="text-sm font-semibold text-slate-500 mb-2">Related Data Resources</h3>
+        <div className="flex flex-wrap gap-3 text-sm">
+          <a href="https://medcheckwize.com" className="text-teal-600 hover:underline">MedCheckWize - Medicare costs by state &rarr;</a>
+          <a href="https://costbycity.com" className="text-teal-600 hover:underline">CostByCity - Cost of living comparison &rarr;</a>
         </div>
       </section>
 
