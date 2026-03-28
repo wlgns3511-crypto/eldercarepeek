@@ -9,6 +9,7 @@ import { FreshnessTag } from "@/components/FreshnessTag";
 import { FAQ } from "@/components/FAQ";
 import { ElderCareCalculator } from "@/components/ElderCareCalculator";
 import { faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { CiteButton } from "@/components/CiteButton";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -218,6 +219,10 @@ export default async function StatePage({ params }: Props) {
       <FAQ items={faqs} />
       <DataFeedback />
       <FreshnessTag source="Genworth Cost of Care Survey" />
+
+      <div className="flex items-center gap-4 mt-4">
+        <CiteButton title={`Senior Care Costs in ${state.state}`} url={`https://eldercarepeek.com/state/${slug}`} source="ElderCarePeek" />
+      </div>
 
       <script
         type="application/ld+json"
