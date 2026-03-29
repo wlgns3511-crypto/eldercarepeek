@@ -1,0 +1,24 @@
+{
+  "common": {
+    "home": "Home",
+    "states": "States",
+    "careTypes": "Care Types",
+    "compare": "Compare",
+    "calculator": "Calculator",
+    "about": "About",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact",
+    "langSwitch": "ES",
+    "langSwitchPrefix": "/es"
+  },
+  "state": {
+    "seniorCare": "Senior Care Costs in {state}",
+    "nursingHome": "Nursing Home",
+    "assistedLiving": "Assisted Living",
+    "homeHealthAide": "Home Health Aide",
+    "adultDayCare": "Adult Day Care",
+    "homeCare": "Home Care",
+    "medicaidCoverage": "Medicaid & Medicare Coverage"
+  }
+}

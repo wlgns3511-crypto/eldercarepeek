@@ -1,0 +1,24 @@
+{
+  "common": {
+    "home": "Inicio",
+    "states": "Estados",
+    "careTypes": "Tipos de Cuidado",
+    "compare": "Comparar",
+    "calculator": "Calculadora",
+    "about": "Acerca de",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "contact": "Contacto",
+    "langSwitch": "EN",
+    "langSwitchPrefix": ""
+  },
+  "state": {
+    "seniorCare": "Costos de Cuidado de Ancianos en {state}",
+    "nursingHome": "Hogar de Ancianos",
+    "assistedLiving": "Vivienda Asistida",
+    "homeHealthAide": "Asistencia de Salud en Casa",
+    "adultDayCare": "Guardería para Adultos",
+    "homeCare": "Cuidado en Casa",
+    "medicaidCoverage": "Cobertura de Medicaid y Medicare"
+  }
+}
