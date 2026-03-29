@@ -8,6 +8,7 @@ import { DataFeedback } from "@/components/DataFeedback";
 import { FreshnessTag } from "@/components/FreshnessTag";
 import { FAQ } from "@/components/FAQ";
 import { faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { ComparisonBar } from "@/components/ComparisonBar";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -170,6 +171,53 @@ export default async function ComparePage({ params }: Props) {
               <CostRow label="Homemaker Services" valA={stateA.homemaker_services_hourly} valB={stateB.homemaker_services_hourly} format="hourly" />
             </tbody>
           </table>
+        </div>
+      </section>
+
+      {/* Visual Comparison Bars */}
+      <section className="mb-8">
+        <h2 className="text-xl font-bold mb-3">Visual Cost Comparison</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px", margin: "24px 0" }}>
+          {stateA.nursing_home_private != null && stateB.nursing_home_private != null && (
+            <div>
+              <h3 className="text-sm font-medium text-slate-600 mb-2">Nursing Home (Private Room) /mo</h3>
+              <ComparisonBar
+                bars={[{ label: stateA.state, value: stateA.nursing_home_private }, { label: stateB.state, value: stateB.nursing_home_private }]}
+                format={(v) => "$" + v.toLocaleString()}
+                referenceValue={natAvg?.nursing_home_private}
+              />
+            </div>
+          )}
+          {stateA.assisted_living != null && stateB.assisted_living != null && (
+            <div>
+              <h3 className="text-sm font-medium text-slate-600 mb-2">Assisted Living /mo</h3>
+              <ComparisonBar
+                bars={[{ label: stateA.state, value: stateA.assisted_living }, { label: stateB.state, value: stateB.assisted_living }]}
+                format={(v) => "$" + v.toLocaleString()}
+                referenceValue={natAvg?.assisted_living}
+              />
+            </div>
+          )}
+          {stateA.home_health_aide_hourly != null && stateB.home_health_aide_hourly != null && (
+            <div>
+              <h3 className="text-sm font-medium text-slate-600 mb-2">Home Health Aide /hr</h3>
+              <ComparisonBar
+                bars={[{ label: stateA.state, value: stateA.home_health_aide_hourly }, { label: stateB.state, value: stateB.home_health_aide_hourly }]}
+                format={(v) => "$" + v.toLocaleString()}
+                referenceValue={natAvg?.home_health_aide_hourly}
+              />
+            </div>
+          )}
+          {stateA.adult_day_care != null && stateB.adult_day_care != null && (
+            <div>
+              <h3 className="text-sm font-medium text-slate-600 mb-2">Adult Day Care /mo</h3>
+              <ComparisonBar
+                bars={[{ label: stateA.state, value: stateA.adult_day_care }, { label: stateB.state, value: stateB.adult_day_care }]}
+                format={(v) => "$" + v.toLocaleString()}
+                referenceValue={natAvg?.adult_day_care}
+              />
+            </div>
+          )}
         </div>
       </section>
 
