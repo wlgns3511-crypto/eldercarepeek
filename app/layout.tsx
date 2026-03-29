@@ -38,6 +38,25 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5724806562146685"
           crossOrigin="anonymous"
         />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "name": "ElderCarePeek",
+              "url": "https://eldercarepeek.com",
+              "description": "Compare senior care costs across all 50 US states and 200+ cities. Nursing home, assisted living, home health aide, and adult day care costs with Medicare and Medicaid coverage information.",
+              "inLanguage": "en-US"
+            },
+            {
+              "@type": "Organization",
+              "name": "ElderCarePeek",
+              "url": "https://eldercarepeek.com",
+              "description": "Compare senior care costs across all 50 US states and 200+ cities. Nursing home, assisted living, home health aide, and adult day care costs with Medicare and Medicaid coverage information.",
+              "sameAs": []
+            }
+          ]
+        }) }} />
       </head>
       <body className={`${inter.className} antialiased bg-white text-slate-900 min-h-screen flex flex-col`}>
         <header className="border-b border-slate-200">
