@@ -114,9 +114,16 @@ export function getTopComparisons(limit = 200): Comparison[] {
 }
 
 export function getComparisonBySlugs(slugA: string, slugB: string): Comparison | undefined {
-  return getDb().prepare(
+  const row = getDb().prepare(
     'SELECT * FROM comparisons WHERE (slug_a = ? AND slug_b = ?) OR (slug_a = ? AND slug_b = ?)'
   ).get(slugA, slugB, slugB, slugA) as Comparison | undefined;
+  if (row) return row;
+
+  // Fallback: dynamically build comparison if both states exist
+  const a = getStateBySlug(slugA);
+  const b = getStateBySlug(slugB);
+  if (!a || !b) return undefined;
+  return { id: 0, slug_a: a.slug, slug_b: b.slug, state_a: a.state, state_b: b.state, popularity_score: 0 };
 }
 
 // --- Aggregate queries ---
@@ -152,6 +159,36 @@ export function getStatesRankedByCareType(careType: 'nursing_home_private' | 'as
   return getDb().prepare(`SELECT * FROM states ORDER BY ${careType} DESC`).all() as State[];
 }
 
+// --- ZIP eldercare queries ---
+
+export interface ZipEldercare {
+  zip_code: string;
+  city: string;
+  state: string;
+  slug: string;
+  population: number | null;
+  median_income: number | null;
+  median_age: number | null;
+  nursing_home_private: number;
+  nursing_home_semi: number;
+  assisted_living: number;
+  home_health_aide_hourly: number;
+  adult_day_care: number;
+  care_affordability_pct: number | null;
+}
+
+export function getAllZipEldercare(): ZipEldercare[] {
+  return getDb().prepare('SELECT * FROM zip_eldercare ORDER BY zip_code').all() as ZipEldercare[];
+}
+
+export function getZipEldercareBySlug(slug: string): ZipEldercare | undefined {
+  return getDb().prepare('SELECT * FROM zip_eldercare WHERE slug = ?').get(slug) as ZipEldercare | undefined;
+}
+
+export function getZipEldercareByState(state: string): ZipEldercare[] {
+  return getDb().prepare('SELECT * FROM zip_eldercare WHERE state = ? ORDER BY population DESC').all(state) as ZipEldercare[];
+}
+
 // --- City Comparison queries ---
 
 export interface CityComparison {
@@ -167,9 +204,17 @@ export function getAllCityComparisonSlugs(limit = 50000): CityComparison[] {
 
 export function getCityComparisonBySlug(slug: string): { a: City; b: City } | undefined {
   const row = getDb().prepare('SELECT city_a_slug, city_b_slug FROM city_comparisons WHERE slug = ?').get(slug) as { city_a_slug: string; city_b_slug: string } | undefined;
-  if (!row) return undefined;
-  const a = getCityBySlug(row.city_a_slug);
-  const b = getCityBySlug(row.city_b_slug);
+  if (row) {
+    const a = getCityBySlug(row.city_a_slug);
+    const b = getCityBySlug(row.city_b_slug);
+    if (a && b) return { a, b };
+  }
+
+  // Fallback: parse slug and look up each city dynamically
+  const parts = slug.split('-vs-');
+  if (parts.length !== 2) return undefined;
+  const a = getCityBySlug(parts[0]);
+  const b = getCityBySlug(parts[1]);
   if (!a || !b) return undefined;
   return { a, b };
 }

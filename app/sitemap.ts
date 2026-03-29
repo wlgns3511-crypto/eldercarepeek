@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllStates, getAllCities, getCareTypes, getTopComparisons, getAllCityComparisonSlugs } from "@/lib/db";
+import { getAllStates, getAllCities, getCareTypes, getTopComparisons, getAllCityComparisonSlugs, getAllZipEldercare } from "@/lib/db";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://eldercarepeek.com";
 
@@ -48,5 +48,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...statePages, ...cityPages, ...carePages, ...comparisonPages, ...cityComparisonPages];
+  const zipPages: MetadataRoute.Sitemap = getAllZipEldercare().map((z) => ({
+    url: `${SITE_URL}/zip/${z.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...statePages, ...cityPages, ...carePages, ...comparisonPages, ...cityComparisonPages, ...zipPages];
 }
