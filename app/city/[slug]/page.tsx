@@ -8,6 +8,10 @@ import { DataFeedback } from "@/components/DataFeedback";
 import { FreshnessTag } from "@/components/FreshnessTag";
 import { FAQ } from "@/components/FAQ";
 import { ElderCareCalculator } from "@/components/ElderCareCalculator";
+import { EditorNote } from "@/components/EditorNote";
+import { DidYouKnow } from "@/components/DidYouKnow";
+import { DataSourceBadge } from "@/components/DataSourceBadge";
+import { CrossSiteLinks } from "@/components/CrossSiteLinks";
 import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 interface Props {
@@ -86,6 +90,8 @@ export default async function CityPage({ params }: Props) {
       <p className="text-slate-500 mb-6">
         Compare nursing home, assisted living, and home care costs in {city.city_name}.
       </p>
+
+      <EditorNote note={`Senior care costs in ${city.city_name} can vary widely by facility and level of care. The figures below reflect regional survey averages — always request a personalized quote from providers.`} />
 
       {/* Cost cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
@@ -180,18 +186,35 @@ export default async function CityPage({ params }: Props) {
 
       <ElderCareCalculator defaultState={city.state_abbr} />
 
+      <DidYouKnow fact="The median annual cost of a private nursing home room in the U.S. exceeds $100,000, and long-term care is not covered by standard Medicare. Planning ahead with long-term care insurance can significantly reduce out-of-pocket expenses." />
+
       <FAQ items={faqs} />
       <DataFeedback />
       <FreshnessTag source="Genworth Cost of Care Survey" />
 
+      <DataSourceBadge sources={[
+        { name: "Genworth", url: "https://www.genworth.com/aging-and-you/finances/cost-of-care.html" },
+        { name: "Medicare.gov", url: "https://www.medicare.gov" },
+      ]} />
+
+      <CrossSiteLinks current="ElderCarePeek" />
+
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          ...faqSchema(faqs),
+          dateModified: "2026-03-31",
+          author: { "@type": "Organization", name: "DataPeek" },
+        }) }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema(breadcrumbs.map((b) => ({ name: b.name, url: b.url })))),
+          __html: JSON.stringify({
+            ...breadcrumbSchema(breadcrumbs.map((b) => ({ name: b.name, url: b.url }))),
+            dateModified: "2026-03-31",
+            author: { "@type": "Organization", name: "DataPeek" },
+          }),
         }}
       />
     </div>
