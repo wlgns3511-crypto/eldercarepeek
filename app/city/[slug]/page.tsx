@@ -14,9 +14,12 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = true;
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
   const cities = getAllCities();
-  return cities.map((c) => ({ slug: c.slug }));
+  return cities.slice(0, 500).map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

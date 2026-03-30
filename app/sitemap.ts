@@ -12,46 +12,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const comparisons = getTopComparisons(200);
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: SITE_URL, changeFrequency: "monthly", priority: 1.0 },
-    { url: `${SITE_URL}/calculator`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/about`, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${SITE_URL}/privacy`, changeFrequency: "yearly", priority: 0.2 },
-    { url: `${SITE_URL}/terms`, changeFrequency: "yearly", priority: 0.2 },
-    { url: `${SITE_URL}/contact`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/`, changeFrequency: "monthly", priority: 1.0 },
+    { url: `${SITE_URL}/calculator/`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/about/`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/privacy/`, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${SITE_URL}/terms/`, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${SITE_URL}/contact/`, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const statePages: MetadataRoute.Sitemap = states.map((s) => ({
-    url: `${SITE_URL}/state/${s.slug}`,
+    url: `${SITE_URL}/state/${s.slug}/`,
     changeFrequency: "monthly" as const,
     priority: 0.9,
   }));
 
   const cityPages: MetadataRoute.Sitemap = cities.map((c) => ({
-    url: `${SITE_URL}/city/${c.slug}`,
+    url: `${SITE_URL}/city/${c.slug}/`,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
   const carePages: MetadataRoute.Sitemap = careTypes.map((ct) => ({
-    url: `${SITE_URL}/care/${ct.slug}`,
+    url: `${SITE_URL}/care/${ct.slug}/`,
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   const comparisonPages: MetadataRoute.Sitemap = comparisons.map((c) => ({
-    url: `${SITE_URL}/compare/${c.slug_a}-vs-${c.slug_b}-senior-care`,
+    url: `${SITE_URL}/compare/${c.slug_a}-vs-${c.slug_b}-senior-care/`,
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
 
   const cityComparisonPages: MetadataRoute.Sitemap = getAllCityComparisonSlugs(11175).map((c) => ({
-    url: `${SITE_URL}/city-compare/${c.slug}`,
+    url: `${SITE_URL}/city-compare/${c.slug}/`,
     changeFrequency: "yearly" as const,
     priority: 0.5,
   }));
 
   const zipPages: MetadataRoute.Sitemap = getAllZipEldercare().map((z) => ({
-    url: `${SITE_URL}/zip/${z.slug}`,
+    url: `${SITE_URL}/zip/${z.slug}/`,
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
@@ -66,5 +66,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticPages, ...statePages, ...cityPages, ...carePages, ...comparisonPages, ...cityComparisonPages, ...zipPages, ...blogPages];
+  const entries: MetadataRoute.Sitemap = [...staticPages, ...statePages, ...cityPages, ...carePages, ...comparisonPages, ...cityComparisonPages, ...zipPages, ...blogPages];
+
+  // Safety: Google limit is 50,000 URLs per sitemap
+  if (entries.length > 50000) {
+    return entries.slice(0, 50000);
+  }
+
+  return entries;
 }

@@ -189,6 +189,22 @@ export function getZipEldercareByState(state: string): ZipEldercare[] {
   return getDb().prepare('SELECT * FROM zip_eldercare WHERE state = ? ORDER BY population DESC').all(state) as ZipEldercare[];
 }
 
+// --- Search queries ---
+
+export function searchStates(query: string, limit = 20): State[] {
+  const q = `%${query}%`;
+  return getDb().prepare(
+    'SELECT * FROM states WHERE state LIKE ? OR abbr LIKE ? ORDER BY state LIMIT ?'
+  ).all(q, q, limit) as State[];
+}
+
+export function searchCities(query: string, limit = 20): City[] {
+  const q = `%${query}%`;
+  return getDb().prepare(
+    'SELECT * FROM cities WHERE city_name LIKE ? OR state_abbr LIKE ? ORDER BY city_name LIMIT ?'
+  ).all(q, q, limit) as City[];
+}
+
 // --- City Comparison queries ---
 
 export interface CityComparison {

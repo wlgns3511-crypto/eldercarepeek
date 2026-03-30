@@ -9,10 +9,14 @@ import { FreshnessTag } from "@/components/FreshnessTag";
 import { FAQ } from "@/components/FAQ";
 import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 import type { State } from "@/lib/db";
+import { AuthorBox } from "@/components/AuthorBox";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
+
+export const dynamicParams = true;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const types = getCareTypes();
@@ -186,6 +190,8 @@ export default async function CareTypePage({ params }: Props) {
       </section>
 
       <AdSlot id="care-bottom" />
+
+      <AuthorBox />
 
       <FAQ items={faqs} />
       <DataFeedback />
