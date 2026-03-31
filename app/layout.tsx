@@ -48,14 +48,19 @@ export default function RootLayout({
               "name": "ElderCarePeek",
               "url": "https://eldercarepeek.com",
               "description": "Compare senior care costs across all 50 US states and 200+ cities. Nursing home, assisted living, home health aide, and adult day care costs with Medicare and Medicaid coverage information.",
-              "inLanguage": "en-US"
+              "inLanguage": "en-US",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://eldercarepeek.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
             },
             {
               "@type": "Organization",
               "name": "ElderCarePeek",
               "url": "https://eldercarepeek.com",
               "description": "Compare senior care costs across all 50 US states and 200+ cities. Nursing home, assisted living, home health aide, and adult day care costs with Medicare and Medicaid coverage information.",
-              "sameAs": []
+              "sameAs": ["https://vocabwize.com", "https://vocablibre.com", "https://wortwize.com", "https://kalimawize.com", "https://dicionariowize.com", "https://kotobapeek.com", "https://salarybycity.com", "https://netpaypeek.com", "https://wagepeek.com", "https://costbycity.com", "https://fairrentwize.com", "https://propertytaxpeek.com", "https://degreewize.com", "https://nameblooms.com", "https://myschoolpeek.com", "https://medcheckwize.com", "https://medcostpeek.com", "https://ingredipeek.com", "https://caloriewize.com", "https://powerbillpeek.com", "https://sunpowerpeek.com", "https://shipcalcwize.com", "https://tariffpeek.com", "https://visapeek.com", "https://zippeek.com", "https://calcpeek.com", "https://datapeekfacts.com", "https://guidebycity.com"]
             }
           ]
         }) }} />
