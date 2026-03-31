@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const year = getDataYear();
 
-  const title = `${stateA.state} vs ${stateB.state} Senior Care Costs (${year + 2})`;
+  const title = `${stateA.state} vs ${stateB.state} Senior Care Costs (${year})`;
   const description = `Compare senior care costs: ${stateA.state} (nursing home ${formatCost(stateA.nursing_home_private)}/mo) vs ${stateB.state} (${formatCost(stateB.nursing_home_private)}/mo). Assisted living, home health aide, adult day care.`;
   return {
     title,
@@ -114,7 +114,7 @@ export default async function ComparePage({ params }: Props) {
       <Breadcrumb items={breadcrumbs.map((b) => ({ label: b.name, href: b.url }))} />
 
       <h1 className="text-3xl font-bold mb-2">
-        {stateA.state} vs {stateB.state}: Senior Care Cost Comparison ({year + 2})
+        {stateA.state} vs {stateB.state}: Senior Care Cost Comparison ({year})
       </h1>
       <p className="text-slate-500 mb-6">
         Side-by-side comparison of nursing home, assisted living, and home care costs.

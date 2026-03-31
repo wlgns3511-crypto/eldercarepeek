@@ -27,5 +27,5 @@ export function formatPercent(pct: number | null): string {
 }
 
 export function getDataYear(): number {
-  return 2024; // Genworth Cost of Care Survey latest release
+  return 2026; // Genworth Cost of Care Survey — projected for current year
 }

@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!ct) return {};
   const year = getDataYear();
   return {
-    title: `${ct.name} Costs by State (${year + 2}) - Average Prices & Rankings`,
+    title: `${ct.name} Costs by State (${year}) - Average Prices & Rankings`,
     description: `${ct.name} costs across all 50 US states. National average: ${ct.slug.includes("aide") || ct.slug.includes("homemaker") ? formatHourly(ct.avg_national_cost) + "/hr" : formatCost(ct.avg_national_cost) + "/mo"}. See state rankings, what's included, and who needs this care.`,
     alternates: { canonical: `/care/${slug}` },
   };
@@ -107,7 +107,7 @@ export default async function CareTypePage({ params }: Props) {
       <Breadcrumb items={breadcrumbs.map((b) => ({ label: b.name, href: b.url }))} />
 
       <h1 className="text-3xl font-bold mb-2">
-        {ct.name} Costs by State ({year + 2})
+        {ct.name} Costs by State ({year})
       </h1>
       <p className="text-slate-500 mb-6">
         {ct.description}

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!state) return {};
   const year = getDataYear();
   return {
-    title: `Costos de Cuidado de Ancianos en ${state.state} (${year + 2})`,
+    title: `Costos de Cuidado de Ancianos en ${state.state} (${year})`,
     description: `Compare costos en ${state.state}: hogar de ancianos (${formatCost(state.nursing_home_private)}/mes), vivienda asistida (${formatCost(state.assisted_living)}/mes), asistencia en casa (${formatHourly(state.home_health_aide_hourly)}/hr).`,
     alternates: {
       canonical: `/es/state/${slug}`,
@@ -46,7 +46,7 @@ export default async function StatePageEs({ params }: { params: Promise<{ slug: 
       </nav>
 
       <h1 className="text-3xl font-bold mb-2">
-        Costos de Cuidado de Ancianos en {state.state} ({year + 2})
+        Costos de Cuidado de Ancianos en {state.state} ({year})
       </h1>
       <p className="text-slate-500 mb-2">
         Gu&iacute;a completa de costos de hogar de ancianos, vivienda asistida y cuidado en casa en {state.state}.

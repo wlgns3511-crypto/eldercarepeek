@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!state) return {};
   const year = getDataYear();
   return {
-    title: `Senior Care Costs in ${state.state} (${year + 2}) - Nursing Home, Assisted Living`,
+    title: `Senior Care Costs in ${state.state} (${year}) - Nursing Home, Assisted Living`,
     description: `Compare senior care costs in ${state.state}: nursing homes (${formatCost(state.nursing_home_private)}/mo), assisted living (${formatCost(state.assisted_living)}/mo), home health aides (${formatHourly(state.home_health_aide_hourly)}/hr). Medicaid coverage info included.`,
     alternates: { canonical: `/state/${slug}` },
   };
@@ -80,7 +80,7 @@ export default async function StatePage({ params }: Props) {
       <Breadcrumb items={breadcrumbs.map((b) => ({ label: b.name, href: b.url }))} />
 
       <h1 className="text-3xl font-bold mb-2">
-        Senior Care Costs in {state.state} ({year + 2})
+        Senior Care Costs in {state.state} ({year})
       </h1>
       <p className="text-slate-500 mb-6">
         Complete guide to nursing home, assisted living, and home care costs in {state.state}.

@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!city) return {};
   const year = getDataYear();
   return {
-    title: `Senior Care Costs in ${city.city_name}, ${city.state_abbr} (${year + 2})`,
+    title: `Senior Care Costs in ${city.city_name}, ${city.state_abbr} (${year})`,
     description: `Nursing home costs ${formatCost(city.nursing_home_private)}/mo, assisted living ${formatCost(city.assisted_living)}/mo, and home health aide ${formatHourly(city.home_health_aide_hourly)}/hr in ${city.city_name}, ${city.state_abbr}.`,
     alternates: { canonical: `/city/${slug}` },
   };
@@ -85,7 +85,7 @@ export default async function CityPage({ params }: Props) {
       <Breadcrumb items={breadcrumbs.map((b) => ({ label: b.name, href: b.url }))} />
 
       <h1 className="text-3xl font-bold mb-2">
-        Senior Care Costs in {city.city_name}, {city.state_abbr} ({year + 2})
+        Senior Care Costs in {city.city_name}, {city.state_abbr} ({year})
       </h1>
       <p className="text-slate-500 mb-6">
         Compare nursing home, assisted living, and home care costs in {city.city_name}.

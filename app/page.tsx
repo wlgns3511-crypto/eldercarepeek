@@ -54,7 +54,7 @@ export default function Home() {
     <div>
       <section className="mb-12">
         <h1 className="text-3xl font-bold mb-3">
-          Senior Care &amp; Elder Care Costs by State ({year + 2})
+          Senior Care &amp; Elder Care Costs by State ({year})
         </h1>
         <p className="text-lg text-slate-600 max-w-2xl">
           Compare nursing home, assisted living, home health aide, and adult day care costs

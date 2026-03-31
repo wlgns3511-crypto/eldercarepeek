@@ -19,7 +19,7 @@ export default function HomeEs() {
   return (
     <>
       <h1 className="text-3xl font-bold text-slate-900 mb-4">
-        Costos de Cuidado de Ancianos en EE.UU. ({year + 2})
+        Costos de Cuidado de Ancianos en EE.UU. ({year})
       </h1>
       <p className="text-slate-600 mb-2">
         Compare costos de cuidado de ancianos en los 50 estados. Hogar de ancianos, vivienda asistida,
