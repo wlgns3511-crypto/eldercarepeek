@@ -41,10 +41,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const year = getDataYear();
 
+  const title = `${stateA.state} vs ${stateB.state} Senior Care Costs (${year + 2})`;
+  const description = `Compare senior care costs: ${stateA.state} (nursing home ${formatCost(stateA.nursing_home_private)}/mo) vs ${stateB.state} (${formatCost(stateB.nursing_home_private)}/mo). Assisted living, home health aide, adult day care.`;
   return {
-    title: `${stateA.state} vs ${stateB.state} Senior Care Costs (${year + 2})`,
-    description: `Compare senior care costs: ${stateA.state} (nursing home ${formatCost(stateA.nursing_home_private)}/mo) vs ${stateB.state} (${formatCost(stateB.nursing_home_private)}/mo). Side-by-side assisted living, home health aide, and adult day care costs.`,
+    title,
+    description,
     alternates: { canonical: `/compare/${slug}` },
+    openGraph: { title, description, url: `/compare/${slug}` },
   };
 }
 

@@ -20,10 +20,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = getCityComparisonBySlug(slug);
   if (!data) return {};
   const { a, b } = data;
+  const title = `${a.city_name}, ${a.state_abbr} vs ${b.city_name}, ${b.state_abbr} Senior Care Costs 2025`;
+  const description = `Compare elder care costs: ${a.city_name} nursing home ${formatCost(a.nursing_home_private)}/mo vs ${b.city_name} ${formatCost(b.nursing_home_private)}/mo.`;
   return {
-    title: `${a.city_name}, ${a.state_abbr} vs ${b.city_name}, ${b.state_abbr} Senior Care Costs 2025`,
-    description: `Compare elder care costs: ${a.city_name} nursing home ${formatCost(a.nursing_home_private)}/mo vs ${b.city_name} ${formatCost(b.nursing_home_private)}/mo. Assisted living, home health aide, and adult day care compared.`,
+    title,
+    description,
     alternates: { canonical: `/city-compare/${slug}/` },
+    openGraph: { title, description, url: `/city-compare/${slug}/` },
   };
 }
 

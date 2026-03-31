@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { getAllStates, getHighestCostStates, getLowestCostStates, getCareTypes, getNationalAverages } from "@/lib/db";
+
+export const metadata: Metadata = {
+  title: "ElderCarePeek — Senior Care Costs for 440+ US Cities",
+  description: "Compare nursing home, assisted living, home health aide, and adult day care costs across 440+ US cities and 50 states. Powered by Genworth & CMS data.",
+  alternates: { canonical: "/" },
+  openGraph: { title: "ElderCarePeek — Senior Care Cost Comparison", description: "Compare senior care costs in 440+ US cities.", url: "/" },
+};
 import { formatCost, formatHourly, getDataYear } from "@/lib/format";
 import { ElderCareCalculator } from "@/components/ElderCareCalculator";
 import { AdSlot } from "@/components/AdSlot";
