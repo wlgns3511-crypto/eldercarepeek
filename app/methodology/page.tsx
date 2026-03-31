@@ -54,6 +54,12 @@ export default function MethodologyPage() {
         If you find inaccuracies or have suggestions for improvement, please 
         <a href="/contact">contact us</a>. We value community input in maintaining data quality.
       </p>
+    
+      <h2>Official Data Sources</h2>
+      <ul>
+        <li><a href="https://data.cms.gov/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Centers for Medicare & Medicaid</a></li>
+        <li><a href="https://www.genworth.com/aging-and-you/finances/cost-of-care.html" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Genworth Cost of Care Survey</a></li>
+      </ul>
     </article>
   );
 }

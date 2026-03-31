@@ -188,6 +188,12 @@ export default async function CityPage({ params }: Props) {
 
       <DidYouKnow fact="The median annual cost of a private nursing home room in the U.S. exceeds $100,000, and long-term care is not covered by standard Medicare. Planning ahead with long-term care insurance can significantly reduce out-of-pocket expenses." />
 
+      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 my-6 text-sm">
+        <p className="text-slate-600">
+          <strong>Related:</strong> See related data: <a href="https://medcheckwize.com" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">Medicare costs</a> and <a href="https://zippeek.com" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">ZIP code demographics</a> for this area.
+        </p>
+      </div>
+
       <FAQ items={faqs} />
       <DataFeedback />
       <FreshnessTag source="Genworth Cost of Care Survey" />
