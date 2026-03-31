@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 const SITE_NAME = "ElderCarePeek";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://eldercarepeek.com";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "Compare senior care costs across all 50 US states and 200+ cities. Nursing home, assisted living, home health aide, and adult day care costs with Medicare and Medicaid coverage information.",
   metadataBase: new URL(SITE_URL),
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
@@ -31,6 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LFRPS67NH" />
         <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-2LFRPS67NH")` }} />
         <script
@@ -87,6 +89,8 @@ export default function RootLayout({
               <a href="/privacy" className="hover:text-teal-600">Privacy</a>
               {" | "}
               <a href="/terms" className="hover:text-teal-600">Terms</a>
+              {" | "}
+              <a href="/disclaimer" className="hover:text-teal-600">Disclaimer</a>
               {" | "}
               <a href="/contact" className="hover:text-teal-600">Contact</a>
             </p>

@@ -234,3 +234,11 @@ export function getCityComparisonBySlug(slug: string): { a: City; b: City } | un
   if (!a || !b) return undefined;
   return { a, b };
 }
+
+// --- Related cities (same state) ---
+
+export function getRelatedCities(stateAbbr: string, excludeSlug: string, limit = 6): City[] {
+  return getDb().prepare(
+    'SELECT * FROM cities WHERE state_abbr = ? AND slug != ? ORDER BY city_name LIMIT ?'
+  ).all(stateAbbr, excludeSlug, limit) as City[];
+}

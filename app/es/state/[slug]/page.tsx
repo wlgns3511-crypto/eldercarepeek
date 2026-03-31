@@ -4,7 +4,7 @@ import { getAllStates, getStateBySlug, getCitiesByState, getNationalAverages } f
 import { formatCost, formatHourly, formatPercent, getDataYear } from "@/lib/format";
 
 export const dynamicParams = true;
-export const revalidate = 86400;
+export const revalidate = false;
 
 export function generateStaticParams() {
   return getAllStates().slice(0, 300).map((s) => ({ slug: s.slug }));

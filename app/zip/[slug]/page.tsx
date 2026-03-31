@@ -11,7 +11,7 @@ interface Props { params: Promise<{ slug: string }> }
 function fmt(v: number | null | undefined): string { return v ? '$' + v.toLocaleString('en-US') : 'N/A'; }
 
 export const dynamicParams = true;
-export const revalidate = 86400;
+export const revalidate = false;
 
 export async function generateStaticParams() {
   const zips = getAllZipEldercare().slice(0, 500);
