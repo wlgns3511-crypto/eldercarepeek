@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Methodology",
   description: "Learn how ElderCarePeek collects, processes, and verifies elder care costs and facility information.",
+  alternates: { canonical: "/methodology/" },
 };
 
 export default function MethodologyPage() {
