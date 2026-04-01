@@ -16,11 +16,14 @@ export const metadata: Metadata = {
     "Compare senior care costs across all 50 US states and 200+ cities. Nursing home, assisted living, home health aide, and adult day care costs with Medicare and Medicaid coverage information.",
   metadataBase: new URL(SITE_URL),
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
+    url: SITE_URL,
     locale: "en_US",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
@@ -60,7 +63,7 @@ export default function RootLayout({
               "name": "ElderCarePeek",
               "url": "https://eldercarepeek.com",
               "description": "Compare senior care costs across all 50 US states and 200+ cities. Nursing home, assisted living, home health aide, and adult day care costs with Medicare and Medicaid coverage information.",
-              "sameAs": ["https://vocabwize.com", "https://vocablibre.com", "https://wortwize.com", "https://kalimawize.com", "https://dicionariowize.com", "https://kotobapeek.com", "https://salarybycity.com", "https://netpaypeek.com", "https://wagepeek.com", "https://costbycity.com", "https://fairrentwize.com", "https://propertytaxpeek.com", "https://degreewize.com", "https://nameblooms.com", "https://myschoolpeek.com", "https://medcheckwize.com", "https://medcostpeek.com", "https://ingredipeek.com", "https://caloriewize.com", "https://powerbillpeek.com", "https://sunpowerpeek.com", "https://shipcalcwize.com", "https://tariffpeek.com", "https://visapeek.com", "https://zippeek.com", "https://calcpeek.com", "https://datapeekfacts.com", "https://guidebycity.com"]
+              "sameAs": ["https://vocabwize.com", "https://vocablibre.com", "https://wortwize.com", "https://kalimawize.com", "https://dicionariowize.com", "https://kotobapeek.com", "https://salarybycity.com", "https://netpaypeek.com", "https://wagepeek.com", "https://costbycity.com", "https://fairrentwize.com", "https://propertytaxpeek.com", "https://degreewize.com", "https://nameblooms.com", "https://myschoolpeek.com", "https://medcheckwize.com", "https://medcostpeek.com", "https://ingredipeek.com", "https://caloriewize.com", "https://powerbillpeek.com", "https://sunpowerpeek.com", "https://shipcalcwize.com", "https://tariffpeek.com", "https://visapeek.com", "https://zippeek.com", "https://calcpeek.com", "https://datapeekfacts.com", "https://guidebycity.com", "https://homepricepeek.com", "https://safecitypeek.com"]
             }
           ]
         }) }} />

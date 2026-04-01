@@ -6,6 +6,16 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/**": ["./data/**"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.eldercarepeek.com" }],
+        destination: "https://eldercarepeek.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
