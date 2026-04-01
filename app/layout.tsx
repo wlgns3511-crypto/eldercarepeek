@@ -16,11 +16,9 @@ export const metadata: Metadata = {
     "Compare senior care costs across all 50 US states and 200+ cities. Nursing home, assisted living, home health aide, and adult day care costs with Medicare and Medicaid coverage information.",
   metadataBase: new URL(SITE_URL),
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    url: SITE_URL,
     locale: "en_US",
   },
   twitter: { card: "summary_large_image" },

@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Senior Care Costs in ${state.state} (${year}) - Nursing Home, Assisted Living`,
     description: `Compare senior care costs in ${state.state}: nursing homes (${formatCost(state.nursing_home_private)}/mo), assisted living (${formatCost(state.assisted_living)}/mo), home health aides (${formatHourly(state.home_health_aide_hourly)}/hr). Medicaid coverage info included.`,
     alternates: { canonical: `/state/${slug}` },
+    openGraph: { url: `/state/${slug}` },
   };
 }
 

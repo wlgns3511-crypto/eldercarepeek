@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${ct.name} Costs by State (${year}) - Average Prices & Rankings`,
     description: `${ct.name} costs across all 50 US states. National average: ${ct.slug.includes("aide") || ct.slug.includes("homemaker") ? formatHourly(ct.avg_national_cost) + "/hr" : formatCost(ct.avg_national_cost) + "/mo"}. See state rankings, what's included, and who needs this care.`,
     alternates: { canonical: `/care/${slug}` },
+    openGraph: { url: `/care/${slug}` },
   };
 }
 

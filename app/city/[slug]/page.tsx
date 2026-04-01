@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Senior Care Costs in ${city.city_name}, ${city.state_abbr} (${year})`,
     description: `Nursing home costs ${formatCost(city.nursing_home_private)}/mo, assisted living ${formatCost(city.assisted_living)}/mo, and home health aide ${formatHourly(city.home_health_aide_hourly)}/hr in ${city.city_name}, ${city.state_abbr}.`,
     alternates: { canonical: `/city/${slug}` },
+    openGraph: { url: `/city/${slug}` },
   };
 }
 

@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Senior Care Costs in ${z.zip_code} ${z.city}, ${z.state} - ElderCarePeek`,
     description: `Senior care costs in ${z.zip_code} ${z.city}, ${z.state}: nursing home ${fmt(z.nursing_home_private)}/mo, assisted living ${fmt(z.assisted_living)}/mo, home health aide $${z.home_health_aide_hourly}/hr.`,
     alternates: { canonical: `/zip/${slug}` },
+    openGraph: { url: `/zip/${slug}` },
   };
 }
 
