@@ -4,6 +4,7 @@ import { ElderCareCalculator } from "@/components/ElderCareCalculator";
 export const metadata: Metadata = {
   title: "Elder Care Cost Calculator - Embeddable Widget",
   robots: "noindex, nofollow",
+  openGraph: { url: "/embed/care-calculator/" },
 };
 
 export default function EmbedCareCalculatorPage() {

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Search Elder Care Costs - Nursing Homes, Assisted Living & More',
   description: 'Search elder care costs by state or city. Find nursing home rates, assisted living costs, and home health aide prices across the US.',
   alternates: { canonical: '/search/' },
+  openGraph: { url: "/search/" },
 };
 
 const POPULAR_SEARCHES = [

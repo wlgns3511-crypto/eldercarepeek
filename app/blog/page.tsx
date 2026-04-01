@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "Expert guides on senior care options, costs, caregiver advice, and how to choose the right care for your loved one.",
   alternates: { canonical: "/blog/" },
+  openGraph: { url: "/blog/" },
 };
 
 function formatDate(dateStr: string) {

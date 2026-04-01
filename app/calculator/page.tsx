@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Elder Care Cost Calculator - Estimate Senior Care Costs by State",
   description: "Calculate nursing home, assisted living, home health aide, and adult day care costs by state. Compare costs with national averages and get 5-year cost projections.",
   alternates: { canonical: "/calculator/" },
+  openGraph: { url: "/calculator/" },
 };
 
 export default function CalculatorPage() {
