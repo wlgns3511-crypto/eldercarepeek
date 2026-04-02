@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getAllStates, getStateBySlug, getCitiesByState, getNationalAverages } from "@/lib/db";
 import { formatCost, formatHourly, formatPercent, getDataYear } from "@/lib/format";
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 export const revalidate = false;
 
 export function generateStaticParams() {

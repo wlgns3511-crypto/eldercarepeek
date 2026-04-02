@@ -10,7 +10,7 @@ interface Props { params: Promise<{ slug: string }> }
 
 function fmt(v: number | null | undefined): string { return v ? '$' + v.toLocaleString('en-US') : 'N/A'; }
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 export const revalidate = false;
 
 export async function generateStaticParams() {
