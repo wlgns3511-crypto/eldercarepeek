@@ -13,6 +13,7 @@ import { DidYouKnow } from "@/components/DidYouKnow";
 import { DataSourceBadge } from "@/components/DataSourceBadge";
 import { CrossSiteLinks } from "@/components/CrossSiteLinks";
 import { InsightCards } from "@/components/InsightCards";
+import { CareTypeBars } from "@/components/CareTypeBars";
 import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 interface Props {
@@ -173,6 +174,15 @@ export default async function CityPage({ params }: Props) {
         adult_day_care={city.adult_day_care}
         nationalAvgs={natAvg}
         costPercentile={costPct}
+      />
+
+      <CareTypeBars
+        cityName={city.city_name}
+        nursing_home_private={city.nursing_home_private}
+        assisted_living={city.assisted_living}
+        home_health_aide_hourly={city.home_health_aide_hourly}
+        adult_day_care={city.adult_day_care}
+        nationalAvgs={natAvg}
       />
 
       {/* Nearby cities */}
