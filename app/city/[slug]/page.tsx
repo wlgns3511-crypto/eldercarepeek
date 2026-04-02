@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getAllCities, getCityBySlug, getStateByAbbr, getCitiesByState, getNationalAverages } from "@/lib/db";
+import { getAllCities, getCityBySlug, getStateByAbbr, getCitiesByState, getNationalAverages, getCityCostPercentile } from "@/lib/db";
 import { formatCost, formatHourly, getDataYear } from "@/lib/format";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { AdSlot } from "@/components/AdSlot";
@@ -12,6 +12,7 @@ import { EditorNote } from "@/components/EditorNote";
 import { DidYouKnow } from "@/components/DidYouKnow";
 import { DataSourceBadge } from "@/components/DataSourceBadge";
 import { CrossSiteLinks } from "@/components/CrossSiteLinks";
+import { InsightCards } from "@/components/InsightCards";
 import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 interface Props {
@@ -46,6 +47,7 @@ export default async function CityPage({ params }: Props) {
 
   const state = getStateByAbbr(city.state_abbr);
   const natAvg = getNationalAverages();
+  const costPct = getCityCostPercentile('nursing_home_private', city.nursing_home_private);
   const year = getDataYear();
 
   // Nearby cities (same state)
@@ -162,6 +164,16 @@ export default async function CityPage({ params }: Props) {
       </section>
 
       <AdSlot id="city-mid" />
+
+      <InsightCards
+        cityName={city.city_name}
+        nursing_home_private={city.nursing_home_private}
+        assisted_living={city.assisted_living}
+        home_health_aide_hourly={city.home_health_aide_hourly}
+        adult_day_care={city.adult_day_care}
+        nationalAvgs={natAvg}
+        costPercentile={costPct}
+      />
 
       {/* Nearby cities */}
       {stateCities.length > 0 && (

@@ -242,3 +242,9 @@ export function getRelatedCities(stateAbbr: string, excludeSlug: string, limit =
     'SELECT * FROM cities WHERE state_abbr = ? AND slug != ? ORDER BY city_name LIMIT ?'
   ).all(stateAbbr, excludeSlug, limit) as City[];
 }
+
+export function getCityCostPercentile(field: string, value: number): number {
+  const total = (getDb().prepare(`SELECT COUNT(*) as c FROM cities WHERE ${field} IS NOT NULL`).get() as { c: number }).c;
+  const below = (getDb().prepare(`SELECT COUNT(*) as c FROM cities WHERE ${field} IS NOT NULL AND ${field} > ?`).get(value) as { c: number }).c;
+  return total > 0 ? Math.round((below / total) * 100) : 50;
+}
